@@ -13,6 +13,8 @@ const showSmartPhoneDetails = (phones) => {
         div.classList.add("col-lg-4");
         div.classList.add("col-sm-12");
         div.classList.add("mb-5");
+        div.classList.add("d-flex");
+        div.classList.add("justify-content-center");
         div.innerHTML = `
             <div class="card" style="width: 18rem;">
                 <img src="${phone.image}" class="card-img-top" alt="...">
