@@ -7,8 +7,8 @@ const smartPhone = () => {
         .then((data) => showSmartPhoneDetails(data.data));
 };
 const showSmartPhoneDetails = (phones) => {
-    for (const phone of phones) {
-        console.log(phone);
+    const show20Phone = phones.slice(0, 20);
+    for (const phone of show20Phone) {
         const div = document.createElement("div");
         div.classList.add("col-lg-4");
         div.classList.add("col-sm-12");
