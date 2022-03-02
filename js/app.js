@@ -2,12 +2,11 @@ const showPhone = document.getElementById("sn-phone");
 const showPhoneDetails = document.getElementById('sn-phone-details');
 const error = document.getElementById("error");
 
-
 // get phone input
 const smartPhone = () => {
     const inputValue = document.getElementById("sn-search-box");
     const searchValue = inputValue.value;
-    // error message 
+    // error message validation
     if ((searchValue) == "") { //Check Empty Value
         error.innerText = "Please Enter a Phone Name";
         showPhoneDetails.textContent = "";
@@ -26,14 +25,16 @@ const smartPhone = () => {
         error.textContent = ""
     }
 };
+
 // Display phones
 const showSmartPhoneResult = phones => {
     //check phone name 
     if (phones.length == 0) {
         error.innerText = "No Phone Found";
     }
+    // show 20 phone 
     const show20Phone = phones.slice(0, 20)
-    show20Phone.forEach(phone => {
+    show20Phone?.forEach(phone => {
         const div = document.createElement("div");
         div.classList.add("col-lg-4");
         div.classList.add("col-sm-12");
@@ -54,6 +55,7 @@ const showSmartPhoneResult = phones => {
         showPhone.appendChild(div);
     })
 }
+
 // get phone details 
 const phoneDetails = async id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
@@ -61,6 +63,7 @@ const phoneDetails = async id => {
     const data = await res.json();
     displayPhoneDetail(data.data)
 }
+
 // show phone details 
 const displayPhoneDetail = singlePhoneDetails => {
     showPhoneDetails.scrollIntoView();
@@ -70,14 +73,15 @@ const displayPhoneDetail = singlePhoneDetails => {
     div.classList.add("justify-content-center");
     div.classList.add("mx-auto");
     div.innerHTML = `
-            <div class="card " >
+            <div class="card" >
                 <img src="${singlePhoneDetails?.image}" class="mx-auto my-2" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">
                         <span>Name: ${singlePhoneDetails?.name} || </span>
                         <span>Brand: ${singlePhoneDetails?.brand} || </span>
                     </h4>
-                    <p>Release Date: ${singlePhoneDetails?.releaseDate}</p>
+                    <p>Release Date: ${singlePhoneDetails.releaseDate ? singlePhoneDetails.releaseDate : 'No Release Date Found'}</p>
+                    <h4 id="error-text" class="text-danger text-center"></h4>
                     <div class="row">
                         <div class="col">
                             <h5><b>Main Features:</b></h5>
@@ -85,7 +89,7 @@ const displayPhoneDetail = singlePhoneDetails => {
                             <p><b>DisplaySize</b>: ${singlePhoneDetails?.mainFeatures?.displaySize}</p> 
                             <p><b>ChipSet</b>: ${singlePhoneDetails?.mainFeatures?.chipSet}</p> 
                             <p><b>Memory</b>: ${singlePhoneDetails?.mainFeatures?.memory}</p> 
-                            <p><b>Sensors</b>: ${singlePhoneDetails?.mainFeatures?.sensors}</p> 
+                            <p><b>Sensors</b>: ${singlePhoneDetails?.mainFeatures?.sensors}</p>                                                        
                         </div>
                         <div class="col">
                             <h5><b>Others:</b></h5>
