@@ -78,7 +78,7 @@ const displayPhoneDetail = singlePhoneDetails => {
                 <div class="card-body">
                     <h4 class="card-title">
                         <span>Name: ${singlePhoneDetails?.name} || </span>
-                        <span>Brand: ${singlePhoneDetails?.brand} || </span>
+                        <span>Brand: ${singlePhoneDetails?.brand} </span>
                     </h4>
                     <p>Release Date: ${singlePhoneDetails.releaseDate ? singlePhoneDetails.releaseDate : 'No Release Date Found'}</p>
                     <h4 id="error-text" class="text-danger text-center"></h4>
