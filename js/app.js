@@ -26,7 +26,7 @@ const smartPhone = () => {
     }
 
 };
-// show phone 
+// Display phones
 const showSmartPhoneDetails = (phones) => {
     const show20Phone = phones.slice(0, 20);
     for (const phone of show20Phone) {
@@ -49,16 +49,16 @@ const showSmartPhoneDetails = (phones) => {
         showPhone.appendChild(div);
     }
 }
-// show phone details 
+// get phone details 
 const phoneDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
         .then((res) => res.json())
         .then(data => displayPhoneDetail(data.data));
 }
+// show phone details 
 const displayPhoneDetail = singlePhone => {
     console.log(singlePhone);
-
     const div = document.createElement("div");
     showPhone.innerHTML = "";
     div.classList.add("my-5");
@@ -68,11 +68,26 @@ const displayPhoneDetail = singlePhone => {
             <div class="card" style="width: 18rem;">
                 <img src="${singlePhone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Name: ${singlePhone.name}</h5>
-                    <h6 class="card-title">Brand: ${singlePhone.brand}</h6> 
-                    <span> Main Features:</span>
-                    <p class="card-text">storage: ${singlePhone.mainFeatures.storage}</p> 
-                    <p class="card-text">displaySize: ${singlePhone.mainFeatures.displaySize}</p> 
+                    <h4 class="card-title">Name: ${singlePhone.name}</h4>
+                    <h5 class="card-title">Brand: ${singlePhone.brand}</h5> 
+                    <h6 class="card-title">Release Date: ${singlePhone.releaseDate}</h6> 
+                    <div>
+                        <h5><b>Main Features:</b></h5>
+                        <p><b>Storage</b>: ${singlePhone.mainFeatures.storage}</p> 
+                        <p><b>DisplaySize</b>: ${singlePhone.mainFeatures.displaySize}</p> 
+                        <p><b>ChipSet</b>: ${singlePhone.mainFeatures.chipSet}</p> 
+                        <p><b>Memory</b>: ${singlePhone.mainFeatures.memory}</p> 
+                        <p><b>Sensors</b>: ${singlePhone.mainFeatures.sensors}</p> 
+                    </div>
+                    <div>
+                        <h5><b>Others:</b></h5>
+                        <p><b>Bluetooth</b>: ${singlePhone.others.Bluetooth}</p> 
+                        <p><b>GPS</b>: ${singlePhone.others.GPS}</p> 
+                        <p><b>NFC</b>: ${singlePhone.others.NFC}</p> 
+                        <p><b>Radio</b>: ${singlePhone.others.Radio}</p> 
+                        <p><b>USB</b>: ${singlePhone.others.USB}</p> 
+                        <p><b>WLAN</b>: ${singlePhone.others.WLAN}</p> 
+                    </div>
                 </div>
             </div>
             `
