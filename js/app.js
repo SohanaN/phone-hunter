@@ -1,15 +1,15 @@
 const showPhone = document.getElementById("sn-phone");
 const showPhoneDetails = document.getElementById('sn-phone-details');
+const error = document.getElementById("error");
+
 
 // get phone input
 const smartPhone = () => {
     const inputValue = document.getElementById("sn-search-box");
-    // clear data 
     const searchValue = inputValue.value;
     // error message 
-    const error = document.getElementById("error");
     if ((searchValue) == "") { //Check Empty Value
-        error.innerText = "No Phone Found";
+        error.innerText = "Please Enter a Phone Name";
         showPhoneDetails.innerHTML = "";
         searchValue.value = "";
         showPhone.innerHTML = "";
@@ -27,7 +27,11 @@ const smartPhone = () => {
     }
 };
 // Display phones
-const showSmartPhoneResult = (phones) => {
+const showSmartPhoneResult = phones => {
+    //check phone name 
+    if (phones.length == 0) {
+        error.innerText = "No Phone Found";
+    }
     phones.forEach(phone => {
         const div = document.createElement("div");
         div.classList.add("col-lg-4");
