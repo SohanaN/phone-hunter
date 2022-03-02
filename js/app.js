@@ -1,10 +1,8 @@
 const showPhone = document.getElementById("sn-phone");
-// get phone 
+// get phone input
 const smartPhone = () => {
-
     const inputValue = document.getElementById("sn-search-box");
     const searchValue = inputValue.value;
-
     const error = document.getElementById("error");
 
     if ((searchValue) == "") { //Empty 
@@ -12,7 +10,7 @@ const smartPhone = () => {
         searchValue.value = "";
         showPhone.innerHTML = "";
     }
-    else if ((searchValue) != (searchValue)) {
+    else if ((searchValue) !== (searchValue)) {
         error.innerText = "No Phone Found";
         searchValue.value = "";
         showPhone.innerHTML = "";
@@ -23,7 +21,6 @@ const smartPhone = () => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => showSmartPhoneDetails(data.data));
-
         searchValue.value = "";
         error.innerHTML = ""
     }
@@ -52,31 +49,34 @@ const showSmartPhoneDetails = (phones) => {
         showPhone.appendChild(div);
     }
 }
-
+// show phone details 
 const phoneDetails = (id) => {
-    const inputValue = document.getElementById("sn-search-box");
-    const searchValue = inputValue.value;
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
         .then((res) => res.json())
-        .then(data => {
-            const allPhones = data.data;
-            const singlePhone = allPhones.find(phone => phone.slug === id);
-            const div = document.createElement("div");
-            showPhone.innerHTML = "";
-            div.classList.add("my-5");
-            div.classList.add("d-flex");
-            div.classList.add("justify-content-center");
-            div.innerHTML = `
+        .then(data => displayPhoneDetail(data.data));
+}
+const displayPhoneDetail = singlePhone => {
+    console.log(singlePhone);
+
+    const div = document.createElement("div");
+    showPhone.innerHTML = "";
+    div.classList.add("my-5");
+    div.classList.add("d-flex");
+    div.classList.add("justify-content-center");
+    div.innerHTML = `
             <div class="card" style="width: 18rem;">
                 <img src="${singlePhone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Name: ${singlePhone.phone_name}</h5>
+                    <h5 class="card-title">Name: ${singlePhone.name}</h5>
                     <h6 class="card-title">Brand: ${singlePhone.brand}</h6> 
+                    <span> Main Features:</span>
+                    <p class="card-text">storage: ${singlePhone.mainFeatures.storage}</p> 
+                    <p class="card-text">displaySize: ${singlePhone.mainFeatures.displaySize}</p> 
                 </div>
             </div>
             `
-            showPhone.appendChild(div);
+    showPhone.appendChild(div);
 
-        })
 }
+
