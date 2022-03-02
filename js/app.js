@@ -10,9 +10,9 @@ const smartPhone = () => {
     // error message 
     if ((searchValue) == "") { //Check Empty Value
         error.innerText = "Please Enter a Phone Name";
-        showPhoneDetails.innerHTML = "";
+        showPhoneDetails.textContent = "";
         searchValue.value = "";
-        showPhone.innerHTML = "";
+        showPhone.textContent = "";
     }
     else {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
@@ -20,10 +20,10 @@ const smartPhone = () => {
             .then((res) => res.json())
             .then((data) => showSmartPhoneResult(data.data));
         //  clear data 
-        showPhone.innerHTML = "";
-        showPhoneDetails.innerHTML = "";
+        showPhone.textContent = "";
+        showPhoneDetails.textContent = "";
         searchValue.value = "";
-        error.innerHTML = ""
+        error.textContent = ""
     }
 };
 // Display phones
@@ -32,7 +32,8 @@ const showSmartPhoneResult = phones => {
     if (phones.length == 0) {
         error.innerText = "No Phone Found";
     }
-    phones.forEach(phone => {
+    const show20Phone = phones.slice(0, 20)
+    show20Phone.forEach(phone => {
         const div = document.createElement("div");
         div.classList.add("col-lg-4");
         div.classList.add("col-sm-12");
@@ -54,18 +55,17 @@ const showSmartPhoneResult = phones => {
     })
 }
 // get phone details 
-const phoneDetails = (id) => {
+const phoneDetails = async id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
-    fetch(url)
-        .then((res) => res.json())
-        .then(data => displayPhoneDetail(data.data));
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhoneDetail(data.data)
 }
 // show phone details 
 const displayPhoneDetail = singlePhoneDetails => {
-    console.log(singlePhoneDetails);
     showPhoneDetails.scrollIntoView();
     const div = document.createElement("div");
-    showPhoneDetails.innerHTML = "";
+    showPhoneDetails.textContent = "";
     div.classList.add("d-flex");
     div.classList.add("justify-content-center");
     div.classList.add("mx-auto");
