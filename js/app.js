@@ -85,20 +85,38 @@ const displayPhoneDetail = singlePhoneDetails => {
                     <div class="row">
                         <div class="col">
                             <h5><b>Main Features:</b></h5>
-                            <p><b>Storage</b>: ${singlePhoneDetails?.mainFeatures?.storage}</p> 
-                            <p><b>DisplaySize</b>: ${singlePhoneDetails?.mainFeatures?.displaySize}</p> 
-                            <p><b>ChipSet</b>: ${singlePhoneDetails?.mainFeatures?.chipSet}</p> 
-                            <p><b>Memory</b>: ${singlePhoneDetails?.mainFeatures?.memory}</p> 
-                            <p><b>Sensors</b>: ${singlePhoneDetails?.mainFeatures?.sensors}</p>                                                        
+                            <p><b>Storage</b>:
+                            ${singlePhoneDetails.mainFeatures?.storage ? singlePhoneDetails.mainFeatures?.storage : 'No'}  
+                            </p>                         
+                            <p><b>DisplaySize</b>:
+                            ${singlePhoneDetails.mainFeatures?.displaySize ? singlePhoneDetails.mainFeatures?.displaySize : 'No'}
+                            </p>  
+                            <p><b>ChipSet</b>:
+                            ${singlePhoneDetails.mainFeatures?.chipSet ? singlePhoneDetails.mainFeatures?.chipSet : 'No'}
+                            </p> 
+                            <p><b>Memory</b>:
+                            ${singlePhoneDetails.mainFeatures?.memory ? singlePhoneDetails.mainFeatures?.memory : 'No'}
+                            </p> 
+                            <p><b>Sensors</b>: 
+                            ${singlePhoneDetails.mainFeatures?.sensors ? singlePhoneDetails.mainFeatures?.sensors : 'No'}</p>                                                        
                         </div>
                         <div class="col">
                             <h5><b>Others:</b></h5>
-                            <p><b>Bluetooth</b>: ${singlePhoneDetails?.others?.Bluetooth}</p> 
-                            <p><b>GPS</b>: ${singlePhoneDetails?.others?.GPS}</p> 
-                            <p><b>NFC</b>: ${singlePhoneDetails?.others?.NFC}</p> 
-                            <p><b>Radio</b>: ${singlePhoneDetails?.others?.Radio}</p> 
-                            <p><b>USB</b>: ${singlePhoneDetails?.others?.USB}</p> 
-                            <p><b>WLAN</b>: ${singlePhoneDetails?.others?.WLAN}</p> 
+                            <p><b>Bluetooth</b>:
+                            ${singlePhoneDetails.others?.Bluetooth ? singlePhoneDetails.others?.Bluetooth : 'No'}
+                             </p> 
+                            <p><b>GPS</b>:
+                            ${singlePhoneDetails.others?.GPS ? singlePhoneDetails.others?.GPS : 'No'}
+                            </p> 
+                            <p><b>NFC</b>:
+                            ${singlePhoneDetails.others?.NFC ? singlePhoneDetails.others?.NFC : 'No'}
+                            </p> 
+                            <p><b>Radio</b>:
+                             ${singlePhoneDetails.others?.Radio ? singlePhoneDetails.others?.Radio : 'No'}
+                            <p><b>USB</b>:
+                             ${singlePhoneDetails.others?.USB ? singlePhoneDetails.others?.USB : 'No'}
+                            <p><b>WLAN</b>:
+                             ${singlePhoneDetails.others?.WLAN ? singlePhoneDetails.others?.WLAN : 'No'}
                         </div>
                     </div
                 </div>
