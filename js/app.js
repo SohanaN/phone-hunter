@@ -1,11 +1,16 @@
 const showPhone = document.getElementById("sn-phone");
 const showPhoneDetails = document.getElementById('sn-phone-details');
 const error = document.getElementById("error");
+const toggoleSpinner = displayStyle => {
+    document.getElementById('sn-spinner').style.display = displayStyle;
+}
 
 // get phone input
 const smartPhone = () => {
     const inputValue = document.getElementById("sn-search-box");
     const searchValue = inputValue.value;
+    // display spinner
+    toggoleSpinner('block');
     // error message validation
     if ((searchValue) == "") { //Check Empty Value
         error.innerText = "Please Enter a Phone Name";
@@ -53,7 +58,8 @@ const showSmartPhoneResult = phones => {
             </div>
             `
         showPhone.appendChild(div);
-    })
+    });
+    toggoleSpinner('none');
 }
 
 // get phone details 

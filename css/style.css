@@ -37,3 +37,6 @@
     height: auto;
 border-radius: 0 50px 50px 0 !important;
 }
+#sn-spinner{
+  display: none;
+}
